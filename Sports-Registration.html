@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sports Registration</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: cornsilk;
+        padding: 100px;
+        padding-top: 0;
+      }
+
+      h1 {
+        text-align: center;
+        color: darkslategray;
+        margin-top: 50px;
+      }
+
+      h2 {
+        color: darkslategray;
+        margin-top: 20px;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 80%;
+      }
+
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+      }
+
+      th {
+        background-color: lightsteelblue;
+      }
+
+      td {
+        background-color: aliceblue;
+      }
+
+      form {
+        display: grid;
+        gap: 14px;
+      }
+
+      .row {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #cfd6e4;
+        border-radius: 8px;
+        box-sizing: border-box;
+      }
+
+      fieldset {
+        border: 1px solid #cfd6e4;
+        border-radius: 10px;
+        padding: 12px;
+      }
+
+      legend {
+        font-weight: 700;
+        padding: 0 6px;
+      }
+
+      .choices {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 8px;
+      }
+
+      .choices label {
+        font-weight: 500;
+        margin: 0;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      button {
+        padding: 12px 20px;
+        border: 1px solid black;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      button[type="submit"] {
+        background: blue;
+        color: white;
+        border-color: rgb(0, 0, 0);
+      }
+
+      .msg {
+        display: none;
+        margin-top: 12px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 13px;
+        line-height: 1.35;
+      }
+      .msg.error {
+        background-color: rgb(255, 230, 230);
+        border: 1px solid rgb(220, 38, 38);
+        color: rgb(127, 29, 29);
+      }
+
+      .msg.ok {
+        background-color: rgb(220, 252, 239);
+        border: 1px solid rgb(16, 185, 129);
+        color: rgb(6, 95, 70);
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Sports Event Registration</h1>
+    <h2>Upcoming Events</h2>
+    <table>
+      <tr>
+        <th>Event</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Location</th>
+      </tr>
+      <tr>
+        <td>Baseball</td>
+        <td>2026-03-17</td>
+        <td>06:00pm pst</td>
+        <td>Dodger Stadium</td>
+      </tr>
+      <tr>
+        <td>Flag Football</td>
+        <td>2026-02-08</td>
+        <td>03:30pm pst</td>
+        <td>SoFi Stadium</td>
+      </tr>
+      <tr>
+        <td>Womens Basketball</td>
+        <td>2026-03-04</td>
+        <td>07:00pm pst</td>
+        <td>Crypto.com Arena</td>
+      </tr>
+      <tr>
+        <td>Ice Hockey</td>
+        <td>2026-03-12</td>
+        <td>06:00pm pst</td>
+        <td>Crypto.com Arena</td>
+      </tr>
+    </table>
+
+    <h2>Registration Form</h2>
+
+    <form id="registrationForm" method="post" action="#">
+      <div class="row">
+        <div>
+          <label for="fullName">Full Name</label>
+          <input
+            id="fullName"
+            name="fullName"
+            placeholder="Enter your full name"
+            type="text"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            placeholder="Enter your email address"
+            type="email"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            placeholder="Choose Password"
+            type="password"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            type="password"
+            required
+          />
+          <div id="passwordMessage" class="msg"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="age">Age (16–80)</label>
+          <input id="age" name="age" type="number" min="16" max="80" />
+        </div>
+
+        <div>
+          <label for="country">Country</label>
+          <select id="country" name="country">
+            <option value="">Select a country</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="MX">Mexico</option>
+            <option value="GB">United Kingdom</option>
+            <option value="AU">Australia</option>
+            <option value="JP">Japan</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Ticket Type</legend>
+        <div class="choices">
+          <label><input type="radio" name="ticketType" value="Standard" checked />Standard</label>
+          <label><input type="radio" name="ticketType" value="VIP" /> VIP</label>
+          <label><input type="radio" name="ticketType" value="Student" />Student</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Extra Options (Choose any)</legend>
+        <div class="choices">
+          <label><input type="checkbox" name="extras" value="Parking" />Parking</label>
+          <label><input type="checkbox" name="extras" value="Meal" /> Meal</label>
+          <label><input type="checkbox" name="extras" value="Merchandise" />Merchandise</label>
+        </div>
+      </fieldset>
+
+      <div class="row">
+        <div>
+          <label for="eventDate">Event Date</label>
+          <input id="eventDate" name="eventDate" type="date" />
+        </div>
+
+        <div>
+          <label for="arrivalTime">Arrival Time</label>
+          <input id="arrivalTime" name="arrivalTime" type="time" />
+        </div>
+      </div>
+
+      <button type="submit">Submit Registration</button>
+      <button type="reset">Reset</button>
+    </form>
+
+    <script>
+      const form = document.getElementById("registrationForm");
+      const password = document.getElementById("password");
+      const confirmPassword = document.getElementById("confirmPassword");
+      const message = document.getElementById("passwordMessage");
+
+      form.addEventListener("submit", function (e) {
+        if (password.value !== confirmPassword.value) {
+          e.preventDefault();
+          message.className = "msg error";
+          message.style.display = "block";
+          message.textContent = "Passwords do not match.";
+        } else {
+          message.className = "msg ok";
+          message.style.display = "block";
+          message.textContent = "Passwords match.";
+        }
+      });
+    </script>
+  </body>
+</html>
